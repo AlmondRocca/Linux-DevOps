@@ -57,7 +57,6 @@ def test_display_many_primes(capsys):
     assert primes_in_output == expected_primes
     print("Test 9 passed.")
 
-# 10. Test display prints newlines every 10 primes
 def test_display_newline_every_10(capsys):
     display(1, 100)
     captured = capsys.readouterr()

@@ -52,8 +52,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: counter
-          path: counter-v2.0.0.deb
+          name: primes
+          path: primes-v2.0.0.deb
           retention-days: 5
 
   lint:
