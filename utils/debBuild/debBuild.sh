@@ -29,4 +29,4 @@ cp ./DEBIAN/postrm $TEMP_DIR/DEBIAN/
 
 echo "Building deb file"
 dpkg-deb --root-owner-group --build $TEMP_DIR
-mv $TEMP_DIR.deb counter-v2.0.0.deb
+mv $TEMP_DIR.deb primes-v2.0.0.deb

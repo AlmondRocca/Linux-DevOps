@@ -9,7 +9,7 @@ build:
 
 test:
 	@echo "Testing the project..."
-	@python3 $(SCRIPTS_DIR)/utils/test/currentCountTest.py
+	@pytest $(SCRIPTS_DIR)/utils/test/primesTest.py
 	@echo "Project tested."
 
 clean:
