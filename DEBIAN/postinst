@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# sudo adduser --system counter
+# sudo systemctl daemon-reload
+# sudo systemctl enable counter.service
+# sudo systemctl start counter.service

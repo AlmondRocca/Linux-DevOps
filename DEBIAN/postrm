@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# sudo systemctl disable counter
+# sudo systemctl daemon-reload
+
+# if id "counter" &>/dev/null; then
+#     sudo userdel counter
+# fi

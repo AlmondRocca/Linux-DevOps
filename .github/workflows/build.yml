@@ -1,0 +1,64 @@
+name: Counter CI
+run-name: ${{ github.actor }} CI
+on: [push]
+jobs:
+  build:
+    timeout-minutes: 2
+    runs-on: [self-hosted, linux, CPSC334]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build project
+        run: |
+          make build
+
+
+  test:
+    timeout-minutes: 2
+    runs-on: [self-hosted, linux, CPSC334]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pytest
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install pytest
+          
+      - name: Test project
+        run: |
+          source venv/bin/activate
+          make test
+
+  deb-build:
+    timeout-minutes: 2
+    runs-on: [self-hosted, linux, CPSC334]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build project
+        run: |
+          make build-deb
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: counter
+          path: counter-v2.0.0.deb
+          retention-days: 5
+
+  lint:
+    needs: deb-build
+    timeout-minutes: 2
+    runs-on: [self-hosted, linux, CPSC334]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint project
+        run: |
+          make lint-deb
